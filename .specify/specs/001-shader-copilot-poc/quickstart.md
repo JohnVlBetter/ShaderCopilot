@@ -1,7 +1,8 @@
 # Quickstart: AI 驱动的 URP Shader 编写助手 (PoC)
 
 **Feature**: `001-shader-copilot-poc`  
-**Date**: 2025-12-28
+**Status**: ✅ Implementation Complete  
+**Date**: 2025-01-15
 
 ---
 
@@ -87,9 +88,16 @@ LOG_LEVEL=INFO
 
 ### 启动后端（开发模式）
 
+**使用 UV (推荐)**:
 ```bash
 cd Agent
-python -m src.server.websocket_server
+uv run python -m shader_copilot.server.websocket_server
+```
+
+**使用 Python**:
+```bash
+cd Agent
+python -m shader_copilot.server.websocket_server
 ```
 
 后端将在 `ws://localhost:8765` 启动。
@@ -213,14 +221,14 @@ Assets/ShaderCopilot/Settings/ShaderCopilotSettings.asset
 ```bash
 # Agent 开发
 cd Agent
-pytest tests/ -v                    # 运行测试
-pytest tests/ --cov=src             # 测试覆盖率
-python -m src.server.websocket_server  # 启动服务器
+uv run pytest tests/ -v                    # 运行测试
+uv run pytest tests/ --cov=shader_copilot  # 测试覆盖率
+uv run python -m shader_copilot.server.websocket_server  # 启动服务器
 
 # 代码质量
-ruff check src/                     # Linting
-ruff format src/                    # Formatting
-mypy src/                           # Type checking
+uv run ruff check src/                     # Linting
+uv run ruff format src/                    # Formatting
+uv run mypy src/                           # Type checking
 ```
 
 ---
@@ -249,7 +257,8 @@ mypy src/                           # Type checking
 
 ## Next Steps
 
-1. 阅读 [spec.md](spec.md) 了解功能需求
-2. 阅读 [data-model.md](data-model.md) 了解数据结构
-3. 阅读 [contracts/websocket-protocol.md](contracts/websocket-protocol.md) 了解通信协议
-4. 等待 `tasks.md` 生成后开始实现
+1. 阅读 [用户指南](../../../Docs/user-guide.md) 了解如何使用
+2. 阅读 [spec.md](spec.md) 了解功能需求
+3. 阅读 [data-model.md](data-model.md) 了解数据结构
+4. 阅读 [contracts/websocket-protocol.md](contracts/websocket-protocol.md) 了解通信协议
+5. 查看 [Agent README](../../../Agent/README.md) 了解后端架构

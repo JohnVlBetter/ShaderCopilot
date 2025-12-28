@@ -26,12 +26,12 @@
 
 **Purpose**: Project initialization and basic structure for both Unity and Agent
 
-- [ ] T001 Create Agent Python project structure with pyproject.toml in Agent/
-- [ ] T002 [P] Create Unity ShaderCopilot folder structure in UnityProject/Assets/ShaderCopilot/
-- [ ] T003 [P] Configure Python dependencies (langgraph, websockets, httpx, pydantic) in Agent/pyproject.toml
-- [ ] T004 [P] Add WebSocketSharp package reference to Unity project
-- [ ] T005 [P] Create .env.example with LLM API configuration template in Agent/.env.example
-- [ ] T006 [P] Create ShaderCopilotSettings ScriptableObject in UnityProject/Assets/ShaderCopilot/Editor/Settings/ShaderCopilotSettings.cs
+- [x] T001 Create Agent Python project structure with pyproject.toml in Agent/
+- [x] T002 [P] Create Unity ShaderCopilot folder structure in UnityProject/Assets/ShaderCopilot/
+- [x] T003 [P] Configure Python dependencies (langgraph, websockets, httpx, pydantic) in Agent/pyproject.toml
+- [x] T004 [P] Add Newtonsoft.Json package reference to Unity project (using native WebSocket)
+- [x] T005 [P] Create .env.example with LLM API configuration template in Agent/.env.example
+- [x] T006 [P] Create ShaderCopilotSettings ScriptableObject in UnityProject/Assets/ShaderCopilot/Editor/Settings/ShaderCopilotSettings.cs
 
 ---
 
@@ -43,35 +43,35 @@
 
 ### Communication Layer
 
-- [ ] T007 Implement WebSocket server entry point in Agent/src/server/websocket_server.py
-- [ ] T008 Implement message handler with JSON parsing in Agent/src/server/message_handler.py
-- [ ] T009 [P] Define message type enums and base message models in Agent/src/server/messages.py
-- [ ] T010 Implement WebSocket client for Unity in UnityProject/Assets/ShaderCopilot/Editor/Communication/WebSocketClient.cs
-- [ ] T011 [P] Implement message handler for Unity in UnityProject/Assets/ShaderCopilot/Editor/Communication/MessageHandler.cs
-- [ ] T012 Implement backend process launcher in UnityProject/Assets/ShaderCopilot/Editor/Communication/BackendLauncher.cs
+- [x] T007 Implement WebSocket server entry point in Agent/src/server/websocket_server.py
+- [x] T008 Implement message handler with JSON parsing in Agent/src/server/message_handler.py
+- [x] T009 [P] Define message type enums and base message models in Agent/src/server/messages.py
+- [x] T010 Implement WebSocket client for Unity in UnityProject/Assets/ShaderCopilot/Editor/Communication/WebSocketClient.cs
+- [x] T011 [P] Implement message handler for Unity in UnityProject/Assets/ShaderCopilot/Editor/Communication/MessageHandler.cs
+- [x] T012 Implement backend process launcher in UnityProject/Assets/ShaderCopilot/Editor/Communication/BackendLauncher.cs
 
 ### Data Models
 
-- [ ] T013 [P] Define SessionState and base state models in Agent/src/graphs/base/state.py
-- [ ] T014 [P] Define ShaderGenState in Agent/src/graphs/shader_gen/state.py
-- [ ] T015 [P] Define message and entity models in Agent/src/models/entities.py
+- [x] T013 [P] Define SessionState and base state models in Agent/src/graphs/base/state.py
+- [x] T014 [P] Define ShaderGenState in Agent/src/graphs/shader_gen/state.py
+- [x] T015 [P] Define message and entity models in Agent/src/models/entities.py
 
 ### Model Management
 
-- [ ] T016 Implement ModelManager with multi-model routing in Agent/src/models/model_manager.py
-- [ ] T017 [P] Add LLM configuration loading from environment in Agent/src/models/config.py
+- [x] T016 Implement ModelManager with multi-model routing in Agent/src/models/model_manager.py
+- [x] T017 [P] Add LLM configuration loading from environment in Agent/src/models/config.py
 
 ### Unity Services (Core)
 
-- [ ] T018 Implement ShaderCompilerService with ShaderUtil API in UnityProject/Assets/ShaderCopilot/Editor/Services/ShaderCompilerService.cs
-- [ ] T019 [P] Implement MaterialManagerService in UnityProject/Assets/ShaderCopilot/Editor/Services/MaterialManagerService.cs
-- [ ] T020 [P] Implement FileManagerService in UnityProject/Assets/ShaderCopilot/Editor/Services/FileManagerService.cs
+- [x] T018 Implement ShaderCompilerService with ShaderUtil API in UnityProject/Assets/ShaderCopilot/Editor/Services/ShaderCompilerService.cs
+- [x] T019 [P] Implement MaterialManagerService in UnityProject/Assets/ShaderCopilot/Editor/Services/MaterialManagerService.cs
+- [x] T020 [P] Implement FileManagerService in UnityProject/Assets/ShaderCopilot/Editor/Services/FileManagerService.cs
 
 ### Tests for Foundational
 
-- [ ] T021 [P] Unit tests for WebSocket message parsing in Agent/tests/unit/test_message_handler.py
-- [ ] T022 [P] Unit tests for ShaderCompilerService in UnityProject/Assets/ShaderCopilot/Tests/Editor/ShaderCompilerServiceTests.cs
-- [ ] T023 Contract tests for WebSocket protocol in Agent/tests/contract/test_websocket_protocol.py
+- [x] T021 [P] Unit tests for WebSocket message parsing in Agent/tests/unit/test_message_parsing.py
+- [x] T022 [P] Unit tests for ShaderCompilerService in UnityProject/Assets/ShaderCopilot/Tests/Editor/ShaderCompilerServiceTests.cs
+- [x] T023 Contract tests for WebSocket protocol in Agent/tests/contract/test_websocket_protocol.py
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
@@ -85,24 +85,24 @@
 
 ### Tests for User Story 1
 
-- [ ] T024 [P] [US1] Integration test for text-to-shader flow in Agent/tests/integration/test_shader_gen_flow.py
-- [ ] T025 [P] [US1] E2E test for compile and preview in UnityProject/Assets/ShaderCopilot/Tests/Editor/TextToShaderE2ETests.cs
+- [x] T024 [P] [US1] Integration test for text-to-shader flow in Agent/tests/integration/test_shader_gen_flow.py
+- [x] T025 [P] [US1] E2E test for compile and preview in UnityProject/Assets/ShaderCopilot/Tests/Editor/TextToShaderE2ETests.cs
 
 ### Implementation for User Story 1
 
-- [ ] T026 [US1] Implement Router Agent for intent classification in Agent/src/router/router_agent.py
-- [ ] T027 [US1] Implement ShaderGenGraph main graph in Agent/src/graphs/shader_gen/graph.py
-- [ ] T028 [US1] Implement ShaderGenGraph nodes (analyze, generate, validate) in Agent/src/graphs/shader_gen/nodes.py
-- [ ] T029 [P] [US1] Implement generate_shader_code LLM tool in Agent/src/tools/llm_tools.py
-- [ ] T030 [US1] Implement Unity tool wrappers (compile, create_material, apply_to_preview) in Agent/src/tools/unity_tools.py
-- [ ] T030a [P] [US1] Implement capture_screenshot tool in Agent/src/tools/unity_tools.py
-- [ ] T031 [US1] Implement PreviewSceneService (including screenshot capture) in UnityProject/Assets/ShaderCopilot/Editor/Services/PreviewSceneService.cs
-- [ ] T032 [P] [US1] Create preview scene with Sphere/Cube/Plane prefabs in UnityProject/Assets/ShaderCopilot/PreviewScene/
-- [ ] T033 [US1] Implement ChatPanel UI with text input in UnityProject/Assets/ShaderCopilot/Editor/Window/ChatPanel.cs
-- [ ] T034 [P] [US1] Implement PreviewPanel UI with RenderTexture display in UnityProject/Assets/ShaderCopilot/Editor/Window/PreviewPanel.cs
-- [ ] T035 [US1] Implement ShaderCopilotWindow main entry in UnityProject/Assets/ShaderCopilot/Editor/Window/ShaderCopilotWindow.cs
-- [ ] T036 [US1] Implement retry logic with error feedback in Agent/src/graphs/shader_gen/nodes.py (retry node)
-- [ ] T037 [US1] Add streaming text display to ChatPanel in UnityProject/Assets/ShaderCopilot/Editor/Window/ChatPanel.cs
+- [x] T026 [US1] Implement Router Agent for intent classification in Agent/src/router/router_agent.py
+- [x] T027 [US1] Implement ShaderGenGraph main graph in Agent/src/graphs/shader_gen/graph.py
+- [x] T028 [US1] Implement ShaderGenGraph nodes (analyze, generate, validate) in Agent/src/graphs/shader_gen/nodes.py
+- [x] T029 [P] [US1] Implement generate_shader_code LLM tool in Agent/src/tools/llm_tools.py
+- [x] T030 [US1] Implement Unity tool wrappers (compile, create_material, apply_to_preview) in Agent/src/tools/unity_tools.py
+- [x] T030a [P] [US1] Implement capture_screenshot tool in Agent/src/tools/unity_tools.py
+- [x] T031 [US1] Implement PreviewSceneService (including screenshot capture) in UnityProject/Assets/ShaderCopilot/Editor/Services/PreviewSceneService.cs
+- [x] T032 [P] [US1] Create preview scene with Sphere/Cube/Plane prefabs in UnityProject/Assets/ShaderCopilot/PreviewScene/
+- [x] T033 [US1] Implement ChatPanel UI with text input in UnityProject/Assets/ShaderCopilot/Editor/Window/ChatPanel.cs
+- [x] T034 [P] [US1] Implement PreviewPanel UI with RenderTexture display in UnityProject/Assets/ShaderCopilot/Editor/Window/PreviewPanel.cs
+- [x] T035 [US1] Implement ShaderCopilotWindow main entry in UnityProject/Assets/ShaderCopilot/Editor/Window/ShaderCopilotWindow.cs
+- [x] T036 [US1] Implement retry logic with error feedback in Agent/src/graphs/shader_gen/nodes.py (retry node)
+- [x] T037 [US1] Add streaming text display to ChatPanel in UnityProject/Assets/ShaderCopilot/Editor/Window/ChatPanel.cs
 
 **Checkpoint**: User Story 1 complete - text description to Shader generation works end-to-end
 
@@ -116,17 +116,17 @@
 
 ### Tests for User Story 2
 
-- [ ] T038 [P] [US2] Unit test for image analysis tool in Agent/tests/unit/test_image_analysis.py
-- [ ] T039 [P] [US2] Integration test for image-to-shader flow in Agent/tests/integration/test_image_shader_flow.py
+- [x] T038 [P] [US2] Unit test for image analysis tool in Agent/tests/unit/test_image_analysis.py
+- [x] T039 [P] [US2] Integration test for image-to-shader flow in Agent/tests/integration/test_image_shader_flow.py
 
 ### Implementation for User Story 2
 
-- [ ] T040 [US2] Implement analyze_image VL tool in Agent/src/tools/llm_tools.py
-- [ ] T041 [US2] Add image handling node to ShaderGenGraph in Agent/src/graphs/shader_gen/nodes.py (analyze_image node)
-- [ ] T042 [US2] Update Router Agent to detect image input in Agent/src/router/router_agent.py
-- [ ] T043 [US2] Add image upload UI to ChatPanel in UnityProject/Assets/ShaderCopilot/Editor/Window/ChatPanel.cs
-- [ ] T044 [P] [US2] Implement image encoding/decoding utilities in Agent/src/utils/image_utils.py
-- [ ] T045 [US2] Add combined text+image handling to ShaderGenGraph in Agent/src/graphs/shader_gen/graph.py
+- [x] T040 [US2] Implement analyze_image VL tool in Agent/src/tools/llm_tools.py
+- [x] T041 [US2] Add image handling node to ShaderGenGraph in Agent/src/graphs/shader_gen/nodes.py (analyze_image node)
+- [x] T042 [US2] Update Router Agent to detect image input in Agent/src/router/router_agent.py
+- [x] T043 [US2] Add image upload UI to ChatPanel in UnityProject/Assets/ShaderCopilot/Editor/Window/ChatPanel.cs
+- [x] T044 [P] [US2] Implement image encoding/decoding utilities in Agent/src/utils/image_utils.py
+- [x] T045 [US2] Add combined text+image handling to ShaderGenGraph in Agent/src/graphs/shader_gen/graph.py
 
 **Checkpoint**: User Story 2 complete - image reference to Shader generation works
 
@@ -140,15 +140,15 @@
 
 ### Tests for User Story 3
 
-- [ ] T046 [P] [US3] Integration test for iterative modification in Agent/tests/integration/test_shader_iteration.py
+- [x] T046 [P] [US3] Integration test for iterative modification in Agent/tests/integration/test_shader_iteration.py
 
 ### Implementation for User Story 3
 
-- [ ] T047 [US3] Implement SessionManager for conversation history in Agent/src/session/session_manager.py
-- [ ] T048 [US3] Add context awareness to ShaderGenGraph (reference previous code) in Agent/src/graphs/shader_gen/nodes.py
-- [ ] T049 [US3] Implement save_shader and save_material tools in Agent/src/tools/unity_tools.py
-- [ ] T050 [US3] Add save confirmation dialog to ChatPanel in UnityProject/Assets/ShaderCopilot/Editor/Window/ChatPanel.cs
-- [ ] T051 [US3] Implement file overwrite confirmation handling in UnityProject/Assets/ShaderCopilot/Editor/Services/FileManagerService.cs
+- [x] T047 [US3] Implement SessionManager for conversation history in Agent/src/session/session_manager.py
+- [x] T048 [US3] Add context awareness to ShaderGenGraph (reference previous code) in Agent/src/graphs/shader_gen/nodes.py
+- [x] T049 [US3] Implement save_shader and save_material tools in Agent/src/tools/unity_tools.py
+- [x] T050 [US3] Add save confirmation dialog to ChatPanel in UnityProject/Assets/ShaderCopilot/Editor/Window/ChatPanel.cs
+- [x] T051 [US3] Implement file overwrite confirmation handling in UnityProject/Assets/ShaderCopilot/Editor/Services/FileManagerService.cs
 
 **Checkpoint**: User Story 3 complete - users can iterate and save their work
 
@@ -162,14 +162,14 @@
 
 ### Tests for User Story 4
 
-- [ ] T052 [P] [US4] Unit test for session persistence in Agent/tests/unit/test_session_manager.py
+- [x] T052 [P] [US4] Unit test for session persistence in Agent/tests/unit/test_session_manager.py
 
 ### Implementation for User Story 4
 
-- [ ] T053 [US4] Implement session JSON file persistence in Agent/src/session/session_manager.py
-- [ ] T054 [P] [US4] Create Sessions folder structure in UnityProject/Assets/ShaderCopilot/Sessions/
-- [ ] T055 [US4] Add session list UI to ShaderCopilotWindow in UnityProject/Assets/ShaderCopilot/Editor/Window/ShaderCopilotWindow.cs
-- [ ] T056 [US4] Implement new session / load session logic in UnityProject/Assets/ShaderCopilot/Editor/Window/ShaderCopilotWindow.cs
+- [x] T053 [US4] Implement session JSON file persistence in Agent/src/session/session_manager.py
+- [x] T054 [P] [US4] Create Sessions folder structure in UnityProject/Assets/ShaderCopilot/Sessions/
+- [x] T055 [US4] Add session list UI to ShaderCopilotWindow in UnityProject/Assets/ShaderCopilot/Editor/Window/ShaderCopilotWindow.cs
+- [x] T056 [US4] Implement new session / load session logic in UnityProject/Assets/ShaderCopilot/Editor/Window/ShaderCopilotWindow.cs
 
 **Checkpoint**: User Story 4 complete - session history works
 
@@ -183,14 +183,14 @@
 
 ### Tests for User Story 5
 
-- [ ] T057 [P] [US5] Unit test for preview object switching in UnityProject/Assets/ShaderCopilot/Tests/Editor/PreviewSceneServiceTests.cs
+- [x] T057 [P] [US5] Unit test for preview object switching in UnityProject/Assets/ShaderCopilot/Tests/Editor/PreviewSceneServiceTests.cs
 
 ### Implementation for User Story 5
 
-- [ ] T058 [US5] Implement list_preview_objects and switch_preview_object tools in Agent/src/tools/unity_tools.py
-- [ ] T059 [US5] Implement set_background tool in Agent/src/tools/unity_tools.py
-- [ ] T060 [US5] Add preview config UI to SettingsPanel in UnityProject/Assets/ShaderCopilot/Editor/Window/SettingsPanel.cs
-- [ ] T061 [US5] Extend PreviewSceneService with background control in UnityProject/Assets/ShaderCopilot/Editor/Services/PreviewSceneService.cs
+- [x] T058 [US5] Implement list_preview_objects and switch_preview_object tools in Agent/src/tools/unity_tools.py
+- [x] T059 [US5] Implement set_background tool in Agent/src/tools/unity_tools.py
+- [x] T060 [US5] Add preview config UI to SettingsPanel in UnityProject/Assets/ShaderCopilot/Editor/Window/SettingsPanel.cs
+- [x] T061 [US5] Extend PreviewSceneService with background control in UnityProject/Assets/ShaderCopilot/Editor/Services/PreviewSceneService.cs
 
 **Checkpoint**: User Story 5 complete - preview scene is configurable
 
@@ -200,15 +200,17 @@
 
 **Purpose**: Error handling, documentation, and final quality checks
 
-- [ ] T062 Add comprehensive error handling to all Unity services in UnityProject/Assets/ShaderCopilot/Editor/Services/*.cs
-- [ ] T063 [P] Add comprehensive error handling to all Agent modules in Agent/src/**/*.py
-- [ ] T064 [P] Implement connection health check and auto-reconnect in UnityProject/Assets/ShaderCopilot/Editor/Communication/WebSocketClient.cs
-- [ ] T065 [P] Add logging throughout Agent codebase in Agent/src/**/*.py
-- [ ] T066 [P] Add logging throughout Unity codebase in UnityProject/Assets/ShaderCopilot/Editor/**/*.cs
-- [ ] T067 Create Agent README with setup instructions in Agent/README.md
-- [ ] T068 [P] Create user documentation in Docs/user-guide.md
-- [ ] T069 Final integration test covering all user stories in Agent/tests/integration/test_full_flow.py
-- [ ] T070 Update quickstart.md with final paths and commands in specs/001-shader-copilot-poc/quickstart.md
+- [x] T062 Add comprehensive error handling to all Unity services in UnityProject/Assets/ShaderCopilot/Editor/Services/*.cs
+- [x] T063 [P] Add comprehensive error handling to all Agent modules in Agent/src/**/*.py
+- [x] T064 [P] Implement connection health check and auto-reconnect in UnityProject/Assets/ShaderCopilot/Editor/Communication/WebSocketClient.cs
+- [x] T065 [P] Add logging throughout Agent codebase in Agent/src/**/*.py
+- [x] T066 [P] Add logging throughout Unity codebase in UnityProject/Assets/ShaderCopilot/Editor/**/*.cs
+- [x] T067 Create Agent README with setup instructions in Agent/README.md
+- [x] T068 [P] Create user documentation in Docs/user-guide.md
+- [x] T069 Final integration test covering all user stories in Agent/tests/integration/test_full_flow.py
+- [x] T070 Update quickstart.md with final paths and commands in specs/001-shader-copilot-poc/quickstart.md
+
+**Checkpoint**: All phases complete - PoC implementation finished!
 
 ---
 

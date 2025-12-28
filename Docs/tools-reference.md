@@ -1,6 +1,6 @@
-# ShaderCopilot Tools Reference
+# ShaderCopilot 工具参考文档
 
-> **Version**: 1.0.0 | **Last Updated**: 2025-12-28
+> **版本**: 1.0.0 | **最后更新**: 2025-12-28
 
 本文档定义了 ShaderCopilot 系统中所有可用的 Tools 及其执行位置。
 
@@ -95,26 +95,78 @@ Agent 根据结果决定下一步
 
 ### 必须实现 (P1)
 
-- `generate_shader_code`
-- `compile_shader`
-- `save_shader`
-- `create_material`
-- `apply_to_preview`
-- `capture_screenshot`
-- `analyze_image`
+- `generate_shader_code` - 核心功能，生成着色器代码
+- `compile_shader` - 验证着色器是否有效
+- `save_shader` - 保存生成的着色器
+- `create_material` - 创建可使用的材质
+- `apply_to_preview` - 预览效果
+- `capture_screenshot` - 截图用于分析
+- `analyze_image` - 分析参考图片
 
 ### 应该实现 (P2)
 
-- `read_shader`
-- `set_material_texture`
-- `list_preview_objects`
-- `switch_preview_object`
-- `set_background`
+- `read_shader` - 读取已有着色器进行修改
+- `set_material_texture` - 设置材质纹理属性
+- `list_preview_objects` - 获取可用预览物体列表
+- `switch_preview_object` - 切换不同形状的预览物体
+- `set_background` - 自定义预览背景
 
 ### 可选实现 (P3)
 
-- `generate_texture_comfyui`
-- `generate_texture_procedural`
-- `save_texture`
-- `check_comfyui_available`
-- `run_mali_compiler`
+- `generate_texture_comfyui` - AI 生成纹理（需要 ComfyUI）
+- `generate_texture_procedural` - 程序化生成纹理
+- `save_texture` - 保存生成的纹理
+- `check_comfyui_available` - 检测 ComfyUI 服务
+- `run_mali_compiler` - 移动端性能分析
+
+---
+
+## Tool 详细说明
+
+### generate_shader_code
+
+**说明**: 使用 LLM 根据用户需求生成 HLSL/ShaderLab 代码
+
+**输入参数**:
+- `requirement`: 用户需求描述
+- `existing_code`: 现有代码（可选，用于修改）
+- `image_analysis`: 图片分析结果（可选）
+
+**输出**:
+- `shader_code`: 生成的着色器代码
+
+### compile_shader
+
+**说明**: 在 Unity 中编译着色器并返回编译结果
+
+**输入参数**:
+- `shader_code`: 着色器源代码
+
+**输出**:
+- `success`: 是否编译成功
+- `errors`: 错误列表（如果有）
+- `warnings`: 警告列表（如果有）
+
+### save_shader
+
+**说明**: 将着色器保存到 Unity 项目中
+
+**输入参数**:
+- `shader_code`: 着色器源代码
+- `shader_name`: 着色器名称
+- `path`: 保存路径（可选）
+
+**输出**:
+- `file_path`: 保存的文件路径
+
+### analyze_image
+
+**说明**: 使用视觉语言模型分析参考图片
+
+**输入参数**:
+- `image_data`: Base64 编码的图片数据
+- `mime_type`: 图片 MIME 类型
+
+**输出**:
+- `analysis`: 视觉风格分析结果
+- `suggested_techniques`: 建议的着色器技术
